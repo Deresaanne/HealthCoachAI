@@ -1,0 +1,2 @@
+FLASK_APP=health_coach.py
+FLASK_DEBUG=true
