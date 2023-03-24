@@ -1,0 +1,19 @@
+{
+  "name": "healthcoachai",
+  "version": "1.0.0",
+  "description": "An online fitness coach.",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "InnovateNation",
+  "license": "MIT",
+  "workspaces": [
+    "apps/*"
+  ],
+  "devDependencies": {
+    "lerna": "^6.6.1"
+  }
+}
