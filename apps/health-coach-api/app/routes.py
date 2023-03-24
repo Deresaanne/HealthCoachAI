@@ -21,4 +21,4 @@ def openai_bridge():
 @app.route('/')
 @app.route('/index')
 def index():
-  return environ.get("OPENAI_API_KEY")
+  return "Hello, World!"'
