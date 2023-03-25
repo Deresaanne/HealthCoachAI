@@ -1,34 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, FormEvent } from 'react'
+
+import { getHealthCoach } from './services/healthcoach.services'
+
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [content, setContent] = useState('')
+  const [message, setMessage] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setLoading(true)
+    getHealthCoach(message).then((response) => {
+      setLoading(false)
+      setContent(response)
+      setMessage('')
+    }).catch(() => {
+      setLoading(false)
+      setContent('Oopss, something went wrong. Please try again later.')
+    });
+  }
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <main>
+      <h1>Healt Coach Advice</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="message">Your goal:</label>
+        <input
+          type="text"
+          id="message"
+          name="message"
+          value={message}
+          onChange={(event) => setMessage(event.target.value)}
+        />
+        <br />
+
+        <button type="submit" disabled={!message || loading}>
+          Send
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+      </form>
+
+      {(loading || content) && (
+        <p>{loading ? (
+          <span className="loader"></span>
+        ): content}</p>
+      )}
+    </main>
   )
 }
 
