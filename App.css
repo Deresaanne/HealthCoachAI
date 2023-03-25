@@ -1,3 +1,7 @@
+.App {
+  text-align: center;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -39,4 +43,13 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.dark {
+  background-color: black;
+  color: white;
+}
+.light {
+  background-color: white;
+  color: black;
 }
