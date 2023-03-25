@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+      }
+      .dark-mode {
+        background-color: black;
+        color: white;
+      }
+      h1 {
+        text-align: center;
+      }
+      .Darkmode {
+        text-align: center;
+      }
+      form {
+        width: 80%;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+      }
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+      }
+      button {
+        text-align: center;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box;
+      }
+      button[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+      button[type="submit"]:hover {
+        background-color: #45a049;
+      }
+      p {
+        width: 80%;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        color: #333;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Chat with AI</h1>
+    <form action="{{ url_for('process_input') }}" method="POST">
+      <label for="sys">System Prompt:</label>
+      <input type="text" id="sys" name="sys" />
+      <br />
+      <label for="message">Your Message:</label>
+      <input type="text" id="message" name="message" />
+      <br />
+      <button type="submit">Send</button>
+    </form>
+    <p>{{ content }}</p>
+    <div class="Darkmode">
+      <button onclick="myFunction()">Toggle dark mode</button>
+    </div>
+    <script>
+      function myFunction() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+      }
+    </script>
+  </body>
+</html>
